@@ -26,46 +26,4 @@ public class RedisConfig extends CachingConfigurerSupport {
 }
 
 
-//@Configuration
-//@EnableCaching
-//public class RedisConfig extends CachingConfigurerSupport {
-//
-//    @Bean
-//    public RedisConnectionFactory redisConnectionFactory() {
-//        return new LettuceConnectionFactory();
-//    }
-//
-//    @Bean
-//    public RedisCacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
-//        RedisCacheConfiguration cacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
-//                .entryTtl(Duration.ofHours(1));
-//
-//        return RedisCacheManager.builder(redisConnectionFactory)
-//                .cacheDefaults(cacheConfiguration)
-//                .build();
-//    }
-//}
-//@Configuration
-//@EnableRedisRepositories
-//public class RedisConfig {
-//
-//    @Bean
-//    public JedisConnectionFactory connectionFactory(){
-//        RedisStandaloneConfiguration configuration=new RedisStandaloneConfiguration();
-//        configuration.setHostName("localHost");
-//        configuration.setPort(6379);
-//        return new JedisConnectionFactory(configuration);
-//    }
-
-
-//    public RedisTemplate<String,Object> redisTemplate(){
-//        RedisTemplate<String,Object> template=new RedisTemplate<>();
-//        template.setConnectionFactory(connectionFactory());
-//        template.setKeySerializer(new GenericJackson2JsonRedisSerializer());
-//        template.setValueSerializer(new GenericJackson2JsonRedisSerializer());
-//        template.setHashKeySerializer(new GenericJackson2JsonRedisSerializer());
-//        template.setEnableTransactionSupport(true);
-//        template.afterPropertiesSet();
-//        return template;
-//    }
 
