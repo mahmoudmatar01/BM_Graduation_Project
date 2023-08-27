@@ -9,6 +9,7 @@ import com.example.bm_project.mapper.IMapper;
 import com.example.bm_project.mapper.Mapper;
 import com.example.bm_project.services.CurrencyExchangeRateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import com.example.bm_project.dto.response.CurrencyExchangeRateResponseDto;
 
@@ -29,6 +30,7 @@ public class CurrencyExchangeRateImpl implements CurrencyExchangeRateService {
     }
 
     @Override
+    //@Cacheable(cacheNames = "exchangeRateCache", key = "#baseCurrencyCode")
     public CurrencyExchangeRateResponseDto getBaseCurrencyExchangeRate(String baseCurrency) {
 
         /* Check if base currency and target currencies are valid or not
