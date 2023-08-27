@@ -2,17 +2,17 @@ package com.example.bm_project.enums;
 
 public enum CurrenciesFlag {
 
-    us,
-    gb,
-    ae,
-    bh,
-    jp,
-    kw,
-    om,
-    qa,
-    sa,
-    eg,
-    eu
+    usd,
+    gbp,
+    aed,
+    bhd,
+    jpy,
+    kwd,
+    omr,
+    qar,
+    sar,
+    egp,
+    eur
 
 
 }
