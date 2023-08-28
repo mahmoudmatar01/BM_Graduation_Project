@@ -7,12 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import static com.example.bm_project.constant.ApiConstant.CurrencyConversionUrl;
+import static com.example.bm_project.constant.ApiConstant.MyApiBaseUrl;
 import static com.example.bm_project.constant.StringConstants.SuccessMessage;
 
 
 @RestController
-@RequestMapping(CurrencyConversionUrl)
+@RequestMapping(MyApiBaseUrl)
 @CrossOrigin(origins = "*", maxAge= 3600)
 public class CurrenciesConversionController {
 
