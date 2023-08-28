@@ -9,10 +9,7 @@ import com.example.bm_project.services.impl.CurrencyExchangeRateImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +20,8 @@ import static com.example.bm_project.constant.StringConstants.SuccessMessage;
 
 @RestController
 @RequestMapping(ExchangeRateUrl)
+@CrossOrigin(origins = "*", maxAge= 3600)
+
 public class CurrencyExchangeRateController {
 
     private final CurrencyExchangeRateService baseCurrencyExChangeRateServices;

@@ -19,6 +19,8 @@ import static com.example.bm_project.constant.StringConstants.SuccessMessage;
 
 @RestController
 @RequestMapping(MultiCurrencyConversion)
+@CrossOrigin(origins = "*", maxAge= 3600)
+
 public class CurrencyCompareController {
 
     private final CurrenciesCompareService currenciesCompareService;
