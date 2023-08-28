@@ -118,7 +118,7 @@ user-friendly interface .
   
   🔸Logger: SLF4J
   
-  🔸Main used Open API :[Exchange-Rate Open-Api](https://www.exchangerate-api.com/docs/supported-codes-endpoint)
+  
 
 
  # **APIs Documantation 📄✒️ Via [Swagger](http://localhost:5902/swagger-ui/index.html)**
