@@ -2,13 +2,11 @@ package com.example.bm_project.services.impl;
 import com.example.bm_project.client.BaseCurrencyExchangeRateClient;
 import com.example.bm_project.exception.NotFoundCurrencyCodeException;
 import com.example.bm_project.helper.Helper;
-import com.example.bm_project.logger.LoggerSingleton;
+import com.example.bm_project.logger.Logger;
 import com.example.bm_project.mapper.IMapper;
 import com.example.bm_project.mapper.Mapper;
 import com.example.bm_project.models.CurrencyRate;
 import com.example.bm_project.services.CurrencyExchangeRateService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
@@ -22,7 +20,7 @@ import static com.example.bm_project.constant.StringConstants.DataReceivedFromAp
 @CacheConfig(cacheNames = "exchangeCache")
 @Service
 public class CurrencyExchangeRateImpl implements CurrencyExchangeRateService {
-    LoggerSingleton logger = LoggerSingleton.getInstance();
+    private Logger logger ;
     //Logger LOG =LoggerFactory.getLogger(CurrencyExchangeRateImpl.class);
     private final BaseCurrencyExchangeRateClient currencyExchangeRateClient;
     private final IMapper mapper;
@@ -33,6 +31,7 @@ public class CurrencyExchangeRateImpl implements CurrencyExchangeRateService {
         this.currencyExchangeRateClient = baseCurrencyExchangeRateRepo;
         this.mapper=mapper;
         this.helper = helper.getInstance();
+        this.logger=logger.getInstance();
     }
 
     @Cacheable(value = "currenciesExchangeRateCache", key = "#baseCurrency")

@@ -1,7 +1,7 @@
 package com.example.bm_project.service;
 import com.example.bm_project.dto.request.CurrenciesCompareRequestDto;
 import com.example.bm_project.dto.response.CurrencyCompareDto;
-import com.example.bm_project.logger.LoggerSingleton;
+import com.example.bm_project.logger.Logger;
 import com.example.bm_project.models.CurrencyCompareResponse;
 import com.example.bm_project.exception.InvalidAmountException;
 import com.example.bm_project.exception.NotFoundCurrencyCodeException;
@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static com.example.bm_project.constant.StringConstants.DataReceivedFromApiSuccessfully;
 import static com.example.bm_project.constant.StringConstants.SuccessfulTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -19,11 +18,16 @@ import java.util.Map;
 
 @SpringBootTest
 public class CurrenciesCompareServiceTest {
-    LoggerSingleton logger = LoggerSingleton.getInstance();
+    private Logger logger ;
+    private CurrenciesCompareService currenciesCompareService;
 
 
     @Autowired
-    CurrenciesCompareService currenciesCompareService;
+    public CurrenciesCompareServiceTest(CurrenciesCompareService currenciesCompareService) {
+        this.logger = logger.getInstance();
+        this.currenciesCompareService=currenciesCompareService;
+    }
+
 
     @Test
     void currencyCompareSuccessTestCase(){

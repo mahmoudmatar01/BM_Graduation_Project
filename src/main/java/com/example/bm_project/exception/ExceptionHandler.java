@@ -1,7 +1,8 @@
 package com.example.bm_project.exception;
 import com.example.bm_project.enums.ErrorCodeEnum;
-import com.example.bm_project.logger.LoggerSingleton;
+import com.example.bm_project.logger.Logger;
 import com.example.bm_project.models.ErrorResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,7 +14,11 @@ import static com.example.bm_project.constant.StringConstants.FailedMessage;
 
 @ControllerAdvice
 public class ExceptionHandler extends ResponseEntityExceptionHandler {
-    LoggerSingleton logger = LoggerSingleton.getInstance();
+    private Logger logger ;
+    @Autowired
+    public ExceptionHandler() {
+        this.logger =logger.getInstance();
+    }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(NotFoundCurrencyCodeException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)

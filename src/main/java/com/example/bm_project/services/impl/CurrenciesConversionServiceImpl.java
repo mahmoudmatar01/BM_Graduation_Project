@@ -3,8 +3,7 @@ package com.example.bm_project.services.impl;
 
 import com.example.bm_project.client.BaseCurrenciesConversionClient;
 import com.example.bm_project.dto.response.CurrenciesConversionDto;
-import com.example.bm_project.logger.LoggerSingleton;
-import com.example.bm_project.models.CurrenciesConversionResponse;
+import com.example.bm_project.logger.Logger;
 import com.example.bm_project.exception.NotFoundCurrencyCodeException;
 import com.example.bm_project.helper.Helper;
 import com.example.bm_project.mapper.IMapper;
@@ -22,7 +21,7 @@ import static com.example.bm_project.constant.StringConstants.*;
 @Service
 public class CurrenciesConversionServiceImpl implements CurrenciesConversionService {
 
-    LoggerSingleton logger = LoggerSingleton.getInstance();
+    private Logger logger ;
     private  final BaseCurrenciesConversionClient currenciesConversionClient;
     private final IMapper mapper;
     private Helper helper;
@@ -32,6 +31,7 @@ public class CurrenciesConversionServiceImpl implements CurrenciesConversionServ
         this.currenciesConversionClient = currenciesConversionRepo;
         this.mapper=mapper;
         this.helper = helper.getInstance();
+        this.logger=logger.getInstance();
         logger.logInfo(this.getClass(),"Client"+ DataReceivedFromApiSuccessfully +"CurrencyConversion API");
     }
 

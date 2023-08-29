@@ -3,7 +3,8 @@ package com.example.bm_project.service;
 
 import com.example.bm_project.exception.InvalidAmountException;
 import com.example.bm_project.exception.NotFoundCurrencyCodeException;
-import com.example.bm_project.logger.LoggerSingleton;
+import com.example.bm_project.logger.Logger;
+import com.example.bm_project.services.CurrenciesCompareService;
 import com.example.bm_project.services.CurrenciesConversionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,19 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 public class CurrenciesConversionServiceTest {
-    LoggerSingleton logger = LoggerSingleton.getInstance();
+    private Logger logger ;
+
+    private CurrenciesConversionService currenciesConversionService;
 
 
 
     @Autowired
-    private CurrenciesConversionService currenciesConversionService;
+    public CurrenciesConversionServiceTest(CurrenciesConversionService currenciesConversionService) {
+        this.logger = logger.getInstance();
+        this.currenciesConversionService=currenciesConversionService;
+    }
+
+
 
 //    @Test
 //    void currencyExchangeRateSuccessTestCase() {

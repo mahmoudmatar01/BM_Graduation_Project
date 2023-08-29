@@ -1,8 +1,9 @@
 package com.example.bm_project.service;
 
 
-import com.example.bm_project.logger.LoggerSingleton;
+import com.example.bm_project.logger.Logger;
 import com.example.bm_project.models.Currency;
+import com.example.bm_project.services.CurrenciesConversionService;
 import com.example.bm_project.services.CurrenciesInfoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,20 @@ import java.util.List;
 
 @SpringBootTest
 public class CurrenciesInfoServiceTest {
-    LoggerSingleton logger = LoggerSingleton.getInstance();
+    private Logger logger ;
+
+    private CurrenciesInfoService currenciesInfoService;
+
 
 
     @Autowired
-    CurrenciesInfoService currenciesInfoService;
+    public CurrenciesInfoServiceTest(CurrenciesInfoService currenciesInfoService) {
+        this.logger = logger.getInstance();
+        this.currenciesInfoService=currenciesInfoService;
+    }
+
+
+
 
 
     @Test

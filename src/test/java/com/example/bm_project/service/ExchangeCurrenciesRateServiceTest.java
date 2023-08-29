@@ -1,8 +1,9 @@
 package com.example.bm_project.service;
 
 import com.example.bm_project.exception.NotFoundCurrencyCodeException;
-import com.example.bm_project.logger.LoggerSingleton;
+import com.example.bm_project.logger.Logger;
 import com.example.bm_project.models.CurrencyRate;
+import com.example.bm_project.services.CurrenciesInfoService;
 import com.example.bm_project.services.CurrencyExchangeRateService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,18 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 public class ExchangeCurrenciesRateServiceTest {
-    LoggerSingleton logger = LoggerSingleton.getInstance();
+    private Logger logger ;
+
+    private CurrencyExchangeRateService currencyExchangeRateService;
+
 
 
     @Autowired
-    CurrencyExchangeRateService currencyExchangeRateService;
+    public ExchangeCurrenciesRateServiceTest(CurrencyExchangeRateService currencyExchangeRateService) {
+        this.logger = logger.getInstance();
+        this.currencyExchangeRateService=currencyExchangeRateService;
+    }
+
 
     @Test
     void currencyExchangeRateSuccessTestCase(){

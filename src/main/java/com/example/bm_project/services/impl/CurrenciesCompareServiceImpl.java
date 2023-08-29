@@ -4,8 +4,7 @@ package com.example.bm_project.services.impl;
 import com.example.bm_project.client.BaseCurrencyCompareClient;
 import com.example.bm_project.dto.request.CurrenciesCompareRequestDto;
 import com.example.bm_project.dto.response.CurrencyCompareDto;
-import com.example.bm_project.logger.LoggerSingleton;
-import com.example.bm_project.models.CurrencyCompareResponse;
+import com.example.bm_project.logger.Logger;
 import com.example.bm_project.exception.NotFoundCurrencyCodeException;
 import com.example.bm_project.helper.Helper;
 import com.example.bm_project.mapper.IMapper;
@@ -28,7 +27,7 @@ import static com.example.bm_project.constant.StringConstants.DataReceivedFromAp
 @Service
 public class CurrenciesCompareServiceImpl implements CurrenciesCompareService {
 
-    LoggerSingleton logger = LoggerSingleton.getInstance();
+    private Logger logger ;
     private  final BaseCurrencyCompareClient currencyCompareClient;
     private final IMapper mapper;
     private Helper helper;
@@ -39,6 +38,7 @@ public class CurrenciesCompareServiceImpl implements CurrenciesCompareService {
         this.currencyCompareClient = currencyCompareClient;
         this.mapper=mapper;
         this.helper = helper.getInstance();
+        this.logger=logger.getInstance();
         logger.logInfo(this.getClass(),"Client"+ DataReceivedFromApiSuccessfully +"CurrencyCompare API");;
     }
 

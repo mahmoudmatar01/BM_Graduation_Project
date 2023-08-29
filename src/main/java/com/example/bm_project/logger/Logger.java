@@ -1,22 +1,21 @@
 package com.example.bm_project.logger;
 
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class LoggerSingleton {
-    private static LoggerSingleton instance;
-    private Logger logger;
+public class Logger {
+    private static Logger instance;
+    private org.slf4j.Logger logger;
 
-    private LoggerSingleton() {
+    private Logger() {
         //Initialize Logger
-        logger = LoggerFactory.getLogger(LoggerSingleton.class);
+        logger = LoggerFactory.getLogger(Logger.class);
     }
 
-    public static LoggerSingleton getInstance() {
+    public static Logger getInstance() {
         if (instance == null) {
-            synchronized (LoggerSingleton.class) {
+            synchronized (Logger.class) {
                 if (instance == null) {
-                    instance = new LoggerSingleton();
+                    instance = new Logger();
                 }
             }
         }
@@ -25,10 +24,6 @@ public class LoggerSingleton {
 
     public void logInfo(Class<?> className,String message) {
         logger.info("LogMsg in class <"+ className.getSimpleName() + ">: "+ message);
-    }
-
-    public void logDebug(Class<?> className,String message) {
-        logger.debug("LogMsg in class <"+ className.getSimpleName() + ">: "+ message);
     }
 
     public void logError(Class<?> className,String message) {

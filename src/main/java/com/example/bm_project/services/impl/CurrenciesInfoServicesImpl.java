@@ -1,9 +1,10 @@
 package com.example.bm_project.services.impl;
 
 
-import com.example.bm_project.logger.LoggerSingleton;
+import com.example.bm_project.logger.Logger;
 import com.example.bm_project.models.Currency;
 import com.example.bm_project.services.CurrenciesInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +15,12 @@ import static com.example.bm_project.constant.StringConstants.DataReceivedFromAp
 //@CacheConfig(cacheNames = "currenciesCache")
 @Service
 public class CurrenciesInfoServicesImpl implements CurrenciesInfoService {
-    LoggerSingleton logger = LoggerSingleton.getInstance();
+    private Logger logger ;
+
+    @Autowired
+    public CurrenciesInfoServicesImpl(){
+        this.logger= logger.getInstance();
+    }
 
     // return static currencies info list
 //    @Cacheable(value = "currenciesInfoCache")

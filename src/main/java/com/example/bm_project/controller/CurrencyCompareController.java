@@ -2,8 +2,7 @@ package com.example.bm_project.controller;
 
 import com.example.bm_project.dto.request.CurrenciesCompareRequestDto;
 import com.example.bm_project.dto.response.CurrencyCompareDto;
-import com.example.bm_project.logger.LoggerSingleton;
-import com.example.bm_project.models.CurrencyCompareResponse;
+import com.example.bm_project.logger.Logger;
 import com.example.bm_project.models.ResponseModel;
 import com.example.bm_project.services.CurrenciesCompareService;
 import com.example.bm_project.services.impl.CurrenciesCompareServiceImpl;
@@ -20,7 +19,7 @@ import static com.example.bm_project.constant.StringConstants.*;
 @CrossOrigin(origins = "*", maxAge= 3600)
 
 public class CurrencyCompareController {
-    LoggerSingleton logger = LoggerSingleton.getInstance();
+    private Logger logger ;
 
 
     private final CurrenciesCompareService currenciesCompareService;
@@ -28,6 +27,8 @@ public class CurrencyCompareController {
     @Autowired
     public CurrencyCompareController(CurrenciesCompareServiceImpl currenciesCompareService) {
         this.currenciesCompareService = currenciesCompareService;
+        this.logger=logger.getInstance();
+
     }
 
 
