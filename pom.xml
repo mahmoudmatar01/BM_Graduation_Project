@@ -55,10 +55,10 @@
             <version>6.0.11</version>
         </dependency>
         <!-- Spring Boot Starter for Redis -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-data-redis</artifactId>-->
-<!--        </dependency>-->
+       <dependency>
+            <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-data-redis</artifactId>
+       </dependency>
 
         <!-- Spring Boot Starter for Caching -->
         <dependency>
