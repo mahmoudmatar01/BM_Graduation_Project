@@ -1,7 +1,7 @@
 package com.example.bm_project.service;
 
 
-import com.example.bm_project.models.CurrencyInfo;
+import com.example.bm_project.models.Currency;
 import com.example.bm_project.services.CurrenciesInfoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class CurrenciesInfoServiceTest {
 
     @Test
     void getCurrencies(){
-        List<CurrencyInfo>currencyInfos=currenciesInfoService.getAllCurrenciesInfo();
+        List<Currency>currencyInfos=currenciesInfoService.getAllCurrenciesInfo();
         assertEquals(currencyDtoList,currencyInfos);
 
     }

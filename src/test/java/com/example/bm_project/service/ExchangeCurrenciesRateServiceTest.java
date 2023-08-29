@@ -1,16 +1,14 @@
 package com.example.bm_project.service;
 
-import com.example.bm_project.dto.response.CurrencyExchangeRateResponseDto;
 import com.example.bm_project.exception.NotFoundCurrencyCodeException;
+import com.example.bm_project.models.CurrencyRate;
 import com.example.bm_project.services.CurrencyExchangeRateService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-import static com.example.bm_project.constant.ProjectConstants.currencyDtoList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -22,26 +20,67 @@ public class ExchangeCurrenciesRateServiceTest {
 
     @Test
     void currencyExchangeRateSuccessTestCase(){
-        CurrencyExchangeRateResponseDto response= currencyExchangeRateService.getBaseCurrencyExchangeRate("USD");
-        Map<String,Double> map=new HashMap<>();
-        map.put("USD", 1.0);
-        map.put("AED", 3.6725);
-        map.put("BHD", 0.376);
-        map.put("EUR", 0.9263);
-        map.put("GBP", 0.7946);
-        map.put("JPY", 146.2421);
-        map.put("KWD", 0.3084);
-        map.put("OMR", 0.3845);
-        map.put("QAR", 3.64);
-        map.put("SAR", 3.75);
-        map.put( "EGP", 30.8789);
+        List<CurrencyRate> response= currencyExchangeRateService.getBaseCurrencyExchangeRate("USD");
+        List<CurrencyRate>currencyRateList=List.of(
+                CurrencyRate
+                        .builder()
+                        .rate(1.0)
+                        .code("USD")
+                        .build(),
+                CurrencyRate
+                        .builder()
+                        .rate(3.6725)
+                        .code("AED")
+                        .build(),
+                CurrencyRate
+                        .builder()
+                        .rate(0.376)
+                        .code("BHD")
+                        .build(),
+                CurrencyRate
+                        .builder()
+                        .rate(30.8789)
+                        .code("EGP")
+                        .build(),
+                CurrencyRate
+                        .builder()
+                        .rate(0.9263)
+                        .code("EUR")
+                        .build(),
+                CurrencyRate
+                        .builder()
+                        .rate(0.7946)
+                        .code("GBP")
+                        .build(),
+                CurrencyRate
+                        .builder()
+                        .rate(146.2421)
+                        .code("JPY")
+                        .build(),
+                CurrencyRate
+                        .builder()
+                        .rate(0.3084)
+                        .code("KWD")
+                        .build(),
+                CurrencyRate
+                        .builder()
+                        .rate(0.3845)
+                        .code("OMR")
+                        .build(),
+                CurrencyRate
+                        .builder()
+                        .rate(3.64)
+                        .code("QAR")
+                        .build(),
+                CurrencyRate
+                        .builder()
+                        .rate(3.75)
+                        .code("SAR")
+                        .build()
 
+        );
 
-        CurrencyExchangeRateResponseDto currencyExchangeRateResponseDto=CurrencyExchangeRateResponseDto
-                .builder()
-                .conversionRates(map)
-                .build();
-        assertEquals(currencyExchangeRateResponseDto.getConversionRates().keySet(),response.getConversionRates().keySet());
+        assertEquals(currencyRateList.stream().map(currencyRate -> currencyRate.getCode()).toList(),response.stream().map(currencyRate -> currencyRate.getCode()).toList());
     }
 
 

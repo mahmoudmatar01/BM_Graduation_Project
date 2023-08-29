@@ -1,6 +1,7 @@
 package com.example.bm_project.service;
 import com.example.bm_project.dto.request.CurrenciesCompareRequestDto;
-import com.example.bm_project.dto.response.CurrencyCompareResponseDto;
+import com.example.bm_project.dto.response.CurrencyCompareDto;
+import com.example.bm_project.models.CurrencyCompareResponse;
 import com.example.bm_project.exception.InvalidAmountException;
 import com.example.bm_project.exception.NotFoundCurrencyCodeException;
 import com.example.bm_project.services.CurrenciesCompareService;
@@ -27,20 +28,16 @@ public class CurrenciesCompareServiceTest {
                 .firstTargetCode("GBP")
                 .secondTargetCode("JPY")
                 .build();
-        CurrencyCompareResponseDto responseDto= currenciesCompareService.getCurrenciesCompareRate(currenciesCompareRequestDto);
-        Map<String,Double> map =new HashMap<>();
-        map.put("AED",10.0);
-        map.put("BHD",1.024);
-        map.put("EUR",2.522);
-        map.put("GBP",2.164);
-        map.put("JPY",398.20799999999997);
-        map.put("KWD",0.8399);
-        map.put("OMR",1.047);
-        map.put("QAR",9.911999999999999);
-        map.put("SAR",10.210999999999999);
-        map.put("USD",2.723);
-        map.put("EGP", 100.8789);
-        assertEquals(map.keySet(),responseDto.getConversionRates().keySet());
+        CurrencyCompareDto responseDto= currenciesCompareService.getCurrenciesCompareRate(currenciesCompareRequestDto);
+
+        Map<String,Double>map=new HashMap<>();
+        map.put("firstTargetRate", 2.35876);
+        map.put("secondTargetRate", 434.64949);
+        CurrencyCompareResponse expectedResponse= CurrencyCompareResponse
+                .builder()
+                        .baseCode("AED")
+                                .conversionRates(map).build();
+        assertEquals(expectedResponse.getConversionRates().keySet(),responseDto.getConversionRates().keySet());
     }
 
     @Test

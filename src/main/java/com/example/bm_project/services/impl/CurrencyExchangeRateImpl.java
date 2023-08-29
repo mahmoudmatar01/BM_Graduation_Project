@@ -4,12 +4,14 @@ import com.example.bm_project.exception.NotFoundCurrencyCodeException;
 import com.example.bm_project.helper.Helper;
 import com.example.bm_project.mapper.IMapper;
 import com.example.bm_project.mapper.Mapper;
+import com.example.bm_project.models.CurrencyRate;
 import com.example.bm_project.services.CurrencyExchangeRateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import com.example.bm_project.dto.response.CurrencyExchangeRateResponseDto;
+
+import java.util.List;
 
 import static com.example.bm_project.constant.StringConstants.CurrencyNotFountExceptionMessage;
 
@@ -30,7 +32,7 @@ public class CurrencyExchangeRateImpl implements CurrencyExchangeRateService {
 
     @Cacheable(value = "currenciesExchangeRateCache", key = "#baseCurrency")
     @Override
-    public CurrencyExchangeRateResponseDto getBaseCurrencyExchangeRate(String baseCurrency) {
+    public List<CurrencyRate> getBaseCurrencyExchangeRate(String baseCurrency) {
 
         /* Check if base currency and target currencies are valid or not
              if it is not valid the project will throw not found currency exception  */

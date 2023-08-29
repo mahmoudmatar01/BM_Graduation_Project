@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CurrencyInfo {
+public class Currency {
     private String name;
     private String currencyCode;
     private String flagUrl;

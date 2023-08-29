@@ -1,20 +1,14 @@
 package com.example.bm_project.dto.response;
 
-
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
-public class CurrenciesConversionResponseDto {
-
+public class CurrenciesConversionDto {
     private String baseCode;
     private String targetCode;
     private String conversionRate;
     private String conversionResult;
-
 }

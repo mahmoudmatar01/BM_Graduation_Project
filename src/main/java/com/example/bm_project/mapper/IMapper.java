@@ -1,16 +1,19 @@
 package com.example.bm_project.mapper;
 
 
-import com.example.bm_project.dto.response.CurrenciesConversionResponseDto;
-import com.example.bm_project.dto.response.CurrencyCompareResponseDto;
-import com.example.bm_project.dto.response.CurrencyExchangeRateResponseDto;
+import com.example.bm_project.dto.response.CurrenciesConversionDto;
+import com.example.bm_project.dto.response.CurrencyCompareDto;
+import com.example.bm_project.models.CurrenciesConversionResponse;
+import com.example.bm_project.models.CurrencyCompareResponse;
+import com.example.bm_project.models.CurrencyExchangeRateResponse;
+import com.example.bm_project.models.CurrencyRate;
 
-import java.util.Map;
+import java.util.List;
 
 public interface IMapper {
 
-    CurrencyExchangeRateResponseDto convertExchangeRateResponseToListCurrencyExchangeRateDto(CurrencyExchangeRateResponseDto response);
-    CurrenciesConversionResponseDto convertCurrenciesConversionResponseToCurrenciesConversionDto(Map<String,Object> response);
+    List<CurrencyRate> convertExchangeRateResponseToListCurrencyExchangeRateDto(CurrencyExchangeRateResponse response);
+    CurrenciesConversionDto convertCurrenciesConversionResponseToCurrenciesConversionDto(CurrenciesConversionResponse response);
 
-    CurrencyCompareResponseDto convertCurrencyExchangeResponseToCurrencyCompareResponseDto(CurrencyCompareResponseDto currencyCompareResponseDto , double amount);
+    CurrencyCompareDto convertCurrencyExchangeResponseToCurrencyCompareResponseDto(CurrencyCompareResponse currencyCompareResponseDto , double amount);
 }

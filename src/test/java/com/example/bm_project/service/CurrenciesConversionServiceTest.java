@@ -1,7 +1,6 @@
 package com.example.bm_project.service;
 
 
-import com.example.bm_project.dto.response.CurrenciesConversionResponseDto;
 import com.example.bm_project.exception.InvalidAmountException;
 import com.example.bm_project.exception.NotFoundCurrencyCodeException;
 import com.example.bm_project.services.CurrenciesConversionService;

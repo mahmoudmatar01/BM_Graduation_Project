@@ -1,4 +1,4 @@
-package com.example.bm_project.dto.response;
+package com.example.bm_project.models;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,7 +13,7 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CurrencyExchangeRateResponseDto {
+public class CurrencyExchangeRateResponse {
     @JsonProperty("conversion_rates")
     private Map<String, Double> conversionRates;
 }

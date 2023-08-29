@@ -2,7 +2,7 @@ package com.example.bm_project.constant;
 
 
 import com.example.bm_project.enums.CurrenciesFlag;
-import com.example.bm_project.models.CurrencyInfo;
+import com.example.bm_project.models.Currency;
 import lombok.Data;
 
 import java.util.List;
@@ -10,68 +10,68 @@ import java.util.List;
 @Data
 public class ProjectConstants {
     public static final String BASE_FLAG_URL="https://wise.com/public-resources/assets/flags/rectangle/";
-    public static final List<CurrencyInfo> currencyDtoList= List.of(
-            CurrencyInfo
+    public static final List<Currency> currencyDtoList= List.of(
+            Currency
                     .builder()
                     .currencyCode("EGP")
                     .name("Egyptian Pound")
                     .flagUrl(BASE_FLAG_URL+CurrenciesFlag.egp+".png")
             .build(),
-            CurrencyInfo
+            Currency
                     .builder()
                     .currencyCode("USD")
                     .name("US Dollar")
                     .flagUrl(BASE_FLAG_URL+ CurrenciesFlag.usd+".png")
                     .build(),
-            CurrencyInfo
+            Currency
                     .builder()
                     .currencyCode("JPY")
                     .name("Japan Yen")
                     .flagUrl(BASE_FLAG_URL+CurrenciesFlag.jpy+".png")
                     .build(),
-            CurrencyInfo
+            Currency
                     .builder()
                     .currencyCode("KWD")
                     .name("Kuwait Dinar")
                     .flagUrl(BASE_FLAG_URL+CurrenciesFlag.kwd+".png")
                     .build(),
-            CurrencyInfo
+            Currency
                     .builder()
                     .currencyCode("OMR")
                     .name("Oman Riyal")
                     .flagUrl(BASE_FLAG_URL+CurrenciesFlag.omr+".png")
                     .build(),
-            CurrencyInfo
+            Currency
                     .builder()
                     .currencyCode("QAR")
                     .name("QATARI Riyal")
                     .flagUrl(BASE_FLAG_URL+CurrenciesFlag.qar+".png")
                     .build(),
-            CurrencyInfo
+            Currency
                     .builder()
                     .currencyCode("SAR")
                     .name("Saudi Riyal")
                     .flagUrl(BASE_FLAG_URL+CurrenciesFlag.sar+".png")
                     .build(),
-            CurrencyInfo
+            Currency
                     .builder()
                     .currencyCode("BHD")
                     .name("Bahrain Dinar")
                     .flagUrl(BASE_FLAG_URL+CurrenciesFlag.bhd+".png")
                     .build(),
-            CurrencyInfo
+            Currency
                     .builder()
                     .currencyCode("AED")
                     .name("UAE DIRHAM")
                     .flagUrl(BASE_FLAG_URL+CurrenciesFlag.aed+".png")
                     .build(),
-            CurrencyInfo
+            Currency
                     .builder()
                     .currencyCode("GBP")
                     .name("Sterling Pound")
                     .flagUrl(BASE_FLAG_URL+CurrenciesFlag.gbp+".png")
                     .build(),
-            CurrencyInfo
+            Currency
                     .builder()
                     .currencyCode("EUR")
                     .name("EURO")

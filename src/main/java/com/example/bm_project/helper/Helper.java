@@ -2,8 +2,7 @@ package com.example.bm_project.helper;
 
 import com.example.bm_project.exception.InvalidAmountException;
 import com.example.bm_project.exception.NotFoundCurrencyCodeException;
-import com.example.bm_project.mapper.Mapper;
-import com.example.bm_project.models.CurrencyInfo;
+import com.example.bm_project.models.Currency;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -40,7 +39,7 @@ public class Helper {
     }
 
     public boolean currencyIsExist(String baseCurrencyCode) {
-        Optional<CurrencyInfo> baseCurrencyDto = currencyDtoList.stream()
+        Optional<Currency> baseCurrencyDto = currencyDtoList.stream()
                 .filter(currencyDto -> currencyDto.getCurrencyCode().equals(baseCurrencyCode))
                 .findFirst();
         if(baseCurrencyDto.isPresent()){
