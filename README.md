@@ -27,17 +27,22 @@ user-friendly interface .
 
    🔹Using Actuators to check application health
 
+   🔹Loggers to facilitate tracking and error handling 
+
    🔹In-Cache Memory is applied 
 
    🔹Scheduler to update the cache memory every ONE HOUR to make sure of that live exchange rates are applied.
 
    🔹Easy to add/remove currencies , as we Scalibility is from our app priorities
 
-   🔹**Design Patterns**: a)Builder Design Pattern  
+   🔹**Design Patterns**: a)Builder Design Pattern    --> in Models
+                          b)Singleton Design Pattern  --> in Helper & Logger
 
    🔹Enums and Constants to ease the work & clean the code.
 
    🔹Using Mappers and Helpers 
+
+   🔹Utilizing Docker, as Our App ensures cross-platform compatibility.
 
 
 
@@ -116,9 +121,18 @@ user-friendly interface .
   
   🔸API Documentation: Swagger 
   
-  🔸Logger: SLF4J
+  🔸Logger: SLF4J & Singleton design pattern classs
   
+  🔸Docker
   
+# **Docker**
+
+   🔹Image:
+       ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/7132d3ae-7030-4ce0-a528-828907d156f0)
+
+
+   🔹Container:
+       ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/17d9cb62-ae93-444e-a99d-afae105e4b86)
 
 
  # **APIs Documantation 📄✒️ Via [Swagger](http://localhost:5902/swagger-ui/index.html)**
@@ -130,6 +144,8 @@ user-friendly interface .
    ➕ Authentication & Authorization sector.
 
    ➕ Integrate with different Wallets.
+
+   ➕ Adding Circuit Breaker design pattern to ensure App stability when increasung requests on APIs and avoid crashing.
 
 
 
