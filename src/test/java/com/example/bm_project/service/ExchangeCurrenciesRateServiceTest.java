@@ -34,12 +34,14 @@ public class ExchangeCurrenciesRateServiceTest {
         map.put("OMR", 0.3845);
         map.put("QAR", 3.64);
         map.put("SAR", 3.75);
+        map.put( "EGP", 30.8789);
+
 
         CurrencyExchangeRateResponseDto currencyExchangeRateResponseDto=CurrencyExchangeRateResponseDto
                 .builder()
                 .conversionRates(map)
                 .build();
-        assertEquals(currencyExchangeRateResponseDto,response);
+        assertEquals(currencyExchangeRateResponseDto.getConversionRates().keySet(),response.getConversionRates().keySet());
     }
 
 

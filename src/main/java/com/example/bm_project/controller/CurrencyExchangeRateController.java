@@ -47,6 +47,6 @@ public class CurrencyExchangeRateController {
         }
 
         //return data response
-        return new ResponseEntity<>(new ResponseModel(SuccessMessage,response), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseModel(SuccessMessage,currencyRates), HttpStatus.OK);
     }
 }

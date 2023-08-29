@@ -13,6 +13,12 @@ public class ProjectConstants {
     public static final List<CurrencyInfo> currencyDtoList= List.of(
             CurrencyInfo
                     .builder()
+                    .currencyCode("EGP")
+                    .name("Egyptian Pound")
+                    .flagUrl(BASE_FLAG_URL+CurrenciesFlag.egp+".png")
+            .build(),
+            CurrencyInfo
+                    .builder()
                     .currencyCode("USD")
                     .name("US Dollar")
                     .flagUrl(BASE_FLAG_URL+ CurrenciesFlag.usd+".png")

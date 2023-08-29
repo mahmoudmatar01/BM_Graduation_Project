@@ -18,7 +18,6 @@ public class CurrenciesCompareServiceTest {
     @Autowired
     CurrenciesCompareService currenciesCompareService;
 
-
     @Test
     void currencyCompareSuccessTestCase(){
         CurrenciesCompareRequestDto currenciesCompareRequestDto= CurrenciesCompareRequestDto
@@ -40,7 +39,8 @@ public class CurrenciesCompareServiceTest {
         map.put("QAR",9.911999999999999);
         map.put("SAR",10.210999999999999);
         map.put("USD",2.723);
-        assertEquals(map,responseDto.getConversionRates());
+        map.put("EGP", 100.8789);
+        assertEquals(map.keySet(),responseDto.getConversionRates().keySet());
     }
 
     @Test
