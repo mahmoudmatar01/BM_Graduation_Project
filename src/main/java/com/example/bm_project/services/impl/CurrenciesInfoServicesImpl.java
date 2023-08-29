@@ -11,12 +11,12 @@ import java.util.List;
 
 import static com.example.bm_project.constant.ProjectConstants.currencyDtoList;
 
-@CacheConfig(cacheNames = "currenciesCache")
+//@CacheConfig(cacheNames = "currenciesCache")
 @Service
 public class CurrenciesInfoServicesImpl implements CurrenciesInfoService {
 
     // return static currencies info list
-    @Cacheable(value = "currenciesInfoCache")
+//    @Cacheable(value = "currenciesInfoCache")
     @Override
     public List<CurrencyInfo> getAllCurrenciesInfo() {
         return currencyDtoList;
