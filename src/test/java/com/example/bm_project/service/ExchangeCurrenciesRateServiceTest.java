@@ -1,6 +1,7 @@
 package com.example.bm_project.service;
 
 import com.example.bm_project.exception.NotFoundCurrencyCodeException;
+import com.example.bm_project.logger.LoggerSingleton;
 import com.example.bm_project.models.CurrencyRate;
 import com.example.bm_project.services.CurrencyExchangeRateService;
 import org.junit.jupiter.api.Test;
@@ -9,11 +10,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
+import static com.example.bm_project.constant.StringConstants.SuccessfulTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 public class ExchangeCurrenciesRateServiceTest {
+    LoggerSingleton logger = LoggerSingleton.getInstance();
+
 
     @Autowired
     CurrencyExchangeRateService currencyExchangeRateService;
@@ -81,6 +85,7 @@ public class ExchangeCurrenciesRateServiceTest {
         );
 
         assertEquals(currencyRateList.stream().map(currencyRate -> currencyRate.getCode()).toList(),response.stream().map(currencyRate -> currencyRate.getCode()).toList());
+        logger.logInfo(this.getClass(),"currencyExchangeRateSuccessTestCase "+SuccessfulTest);
     }
 
 
@@ -88,6 +93,7 @@ public class ExchangeCurrenciesRateServiceTest {
     void currencyExchangeRateBaseCurrencyInvalidTest() {
         assertThrows(NotFoundCurrencyCodeException.class, () -> {
             currencyExchangeRateService.getBaseCurrencyExchangeRate("asd");
+            logger.logInfo(this.getClass(),"currencyExchangeRateBaseCurrencyInvalidTest "+SuccessfulTest);
         });
     }
 

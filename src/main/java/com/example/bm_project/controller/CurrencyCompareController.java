@@ -2,6 +2,7 @@ package com.example.bm_project.controller;
 
 import com.example.bm_project.dto.request.CurrenciesCompareRequestDto;
 import com.example.bm_project.dto.response.CurrencyCompareDto;
+import com.example.bm_project.logger.LoggerSingleton;
 import com.example.bm_project.models.CurrencyCompareResponse;
 import com.example.bm_project.models.ResponseModel;
 import com.example.bm_project.services.CurrenciesCompareService;
@@ -12,13 +13,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import static com.example.bm_project.constant.ApiConstant.MultiCurrencyConversion;
-import static com.example.bm_project.constant.StringConstants.SuccessMessage;
+import static com.example.bm_project.constant.StringConstants.*;
 
 @RestController
 @RequestMapping(MultiCurrencyConversion)
 @CrossOrigin(origins = "*", maxAge= 3600)
 
 public class CurrencyCompareController {
+    LoggerSingleton logger = LoggerSingleton.getInstance();
+
 
     private final CurrenciesCompareService currenciesCompareService;
 
@@ -36,6 +39,8 @@ public class CurrencyCompareController {
                 .getCurrenciesCompareRate(
                         currenciesCompareRequestDto
                 );
+        logger.logInfo(this.getClass(),SuccessfulControllerResponse);
+
 
         return new ResponseEntity<>(
                 ResponseModel

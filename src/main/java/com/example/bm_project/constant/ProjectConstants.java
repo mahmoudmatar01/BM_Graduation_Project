@@ -73,8 +73,8 @@ public class ProjectConstants {
                     .build(),
             Currency
                     .builder()
-                    .currencyCode("EUR")
-                    .name("EURO")
+                    .currencyCode("EGP")
+                    .name("Egyptian Pound")
                     .flagUrl(BASE_FLAG_URL+CurrenciesFlag.eur+".png")
                     .build()
     );

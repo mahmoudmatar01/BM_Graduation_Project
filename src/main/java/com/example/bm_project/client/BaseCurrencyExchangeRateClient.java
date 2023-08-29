@@ -1,5 +1,6 @@
 package com.example.bm_project.client;
 
+import com.example.bm_project.logger.LoggerSingleton;
 import com.example.bm_project.models.CurrencyExchangeRateResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,4 +16,5 @@ public interface BaseCurrencyExchangeRateClient {
 
     @GetMapping("/latest/{baseCurrencyCode}")
     CurrencyExchangeRateResponse getBaseCurrencyExchangeRate(@PathVariable String baseCurrencyCode);
+
 }

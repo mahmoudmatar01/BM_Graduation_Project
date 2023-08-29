@@ -3,16 +3,20 @@ package com.example.bm_project.service;
 
 import com.example.bm_project.exception.InvalidAmountException;
 import com.example.bm_project.exception.NotFoundCurrencyCodeException;
+import com.example.bm_project.logger.LoggerSingleton;
 import com.example.bm_project.services.CurrenciesConversionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static com.example.bm_project.constant.StringConstants.SuccessfulTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 public class CurrenciesConversionServiceTest {
+    LoggerSingleton logger = LoggerSingleton.getInstance();
+
 
 
     @Autowired
@@ -36,18 +40,21 @@ public class CurrenciesConversionServiceTest {
     void currencyConversionBaseCurrencyInvalidTestCase() {
         assertThrows(NotFoundCurrencyCodeException.class, () -> {
             currenciesConversionService.getCurrenciesConversionRate("df","KWD","12.3");
+            logger.logInfo(this.getClass(),"currencyConversionBaseCurrencyInvalidTestCase "+SuccessfulTest);
         });
     }
     @Test
     void currencyConversionAmountInvalidTestCase() {
         assertThrows(InvalidAmountException.class, () -> {
             currenciesConversionService.getCurrenciesConversionRate("JPY","KWD","-12.3");
+            logger.logInfo(this.getClass(),"currencyConversionAmountInvalidTestCase "+SuccessfulTest);
         });
     }
     @Test
     void currencyConversionAmountInvalidSecondTestCase() {
         assertThrows(InvalidAmountException.class, () -> {
             currenciesConversionService.getCurrenciesConversionRate("JPY","KWD","fd");
+            logger.logInfo(this.getClass(),"currencyConversionAmountInvalidSecondTestCase "+SuccessfulTest);
         });
     }
 }

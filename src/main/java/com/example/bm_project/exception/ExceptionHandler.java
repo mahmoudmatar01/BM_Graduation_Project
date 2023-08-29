@@ -1,5 +1,6 @@
 package com.example.bm_project.exception;
 import com.example.bm_project.enums.ErrorCodeEnum;
+import com.example.bm_project.logger.LoggerSingleton;
 import com.example.bm_project.models.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,12 +13,14 @@ import static com.example.bm_project.constant.StringConstants.FailedMessage;
 
 @ControllerAdvice
 public class ExceptionHandler extends ResponseEntityExceptionHandler {
+    LoggerSingleton logger = LoggerSingleton.getInstance();
 
     @org.springframework.web.bind.annotation.ExceptionHandler(NotFoundCurrencyCodeException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public final ResponseEntity<ErrorResponse> handleCurrencyNotFoundException(){
         ErrorResponse errorResponse=new ErrorResponse(FailedMessage,"currency00#%**", ErrorCodeEnum.CurrencyNotFound.getValue());
+        logger.logInfo(this.getClass(),"handleCurrencyNotFoundException worked successfully");
         return  new ResponseEntity<>(errorResponse,HttpStatus.BAD_REQUEST);
     }
     @org.springframework.web.bind.annotation.ExceptionHandler(InvalidAmountException.class)
@@ -25,6 +28,7 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
     @ResponseBody
     public final ResponseEntity<ErrorResponse> handleInvalidArgumentException(){
         ErrorResponse errorResponse=new ErrorResponse(FailedMessage,"amount#2$$",ErrorCodeEnum.InValidAmount.getValue());
+        logger.logInfo(this.getClass(),"handleInvalidArgumentException worked successfully");
         return  new ResponseEntity<>(errorResponse,HttpStatus.BAD_REQUEST);
     }
     @org.springframework.web.bind.annotation.ExceptionHandler(GlobalException.class)
@@ -32,6 +36,7 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
     @ResponseBody
     public final ResponseEntity<ErrorResponse> handleGlobalException(){
         ErrorResponse errorResponse=new ErrorResponse(FailedMessage,"invalid&%44**",ErrorCodeEnum.GlobalExceptionError.getValue());
+        logger.logInfo(this.getClass(),"handleGlobalException worked successfully");
         return  new ResponseEntity<>(errorResponse,HttpStatus.BAD_REQUEST);
     }
 

@@ -1,4 +1,5 @@
 package com.example.bm_project.controller;
+import com.example.bm_project.logger.LoggerSingleton;
 import com.example.bm_project.models.ResponseModel;
 import com.example.bm_project.services.CurrenciesConversionService;
 import com.example.bm_project.services.impl.CurrenciesConversionServiceImpl;
@@ -8,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import static com.example.bm_project.constant.ApiConstant.CurrencyConversionUrl;
-import static com.example.bm_project.constant.StringConstants.SuccessMessage;
+import static com.example.bm_project.constant.StringConstants.*;
 
 
 @RestController
@@ -16,7 +17,7 @@ import static com.example.bm_project.constant.StringConstants.SuccessMessage;
 @CrossOrigin(origins = "*", maxAge= 3600)
 public class CurrenciesConversionController {
 
-
+    LoggerSingleton logger = LoggerSingleton.getInstance();
     private final CurrenciesConversionService currenciesConversionService;
 
     @Autowired
@@ -27,6 +28,7 @@ public class CurrenciesConversionController {
 
     @GetMapping("/currency-conversion/{baseCurrency}/{targetCurrency}/{amount}")
     ResponseEntity<ResponseModel> getAllCurrencyCodes(@PathVariable  String baseCurrency, @PathVariable String targetCurrency, @PathVariable String amount){
+        logger.logInfo(this.getClass(),SuccessfulControllerResponse);
         return new ResponseEntity<>(new ResponseModel(
                 SuccessMessage,
                 currenciesConversionService
