@@ -2,7 +2,7 @@ package com.example.bm_project.constant;
 
 
 public class ApiConstant {
-    public static final String ClientAPIKEY ="3ac00aba76d60e84e53e75f4";
+    public static final String ClientAPIKEY ="53ed5f323a9cdaac5055e13d";
     public static final String ClientBASEURL ="https://v6.exchangerate-api.com/v6";
     public static final String MyApiBaseUrl="api/v1";
     public static final String ExchangeRateUrl=MyApiBaseUrl+"/exchange-rate";

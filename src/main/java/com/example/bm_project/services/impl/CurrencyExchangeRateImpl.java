@@ -1,6 +1,4 @@
 package com.example.bm_project.services.impl;
-
-
 import com.example.bm_project.client.BaseCurrencyExchangeRateClient;
 import com.example.bm_project.exception.NotFoundCurrencyCodeException;
 import com.example.bm_project.helper.IHelper;
@@ -9,13 +7,14 @@ import com.example.bm_project.mapper.IMapper;
 import com.example.bm_project.mapper.Mapper;
 import com.example.bm_project.services.CurrencyExchangeRateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.stereotype.Service;
 import com.example.bm_project.dto.response.CurrencyExchangeRateResponseDto;
 
 import static com.example.bm_project.constant.StringConstants.CurrencyNotFountExceptionMessage;
 
+@CacheConfig(cacheNames = "exchangeCache")
 @Service
 public class CurrencyExchangeRateImpl implements CurrencyExchangeRateService {
 
@@ -30,7 +29,7 @@ public class CurrencyExchangeRateImpl implements CurrencyExchangeRateService {
         this.helper = helper;
     }
 
-//    @Cacheable(value = "currencyExchangeRates", key = "#baseCurrency")
+    @Cacheable(value = "currenciesExchangeRateCache", key = "#baseCurrency")
     @Override
     public CurrencyExchangeRateResponseDto getBaseCurrencyExchangeRate(String baseCurrency) {
 
