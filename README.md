@@ -10,6 +10,11 @@ user-friendly interface .
   🔸Android
   🔸IOS
 
+## **Project Hierarchy**
+
+ ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/49dbc554-3164-47a5-be74-d521d792661a)
+
+
 # **Main Services & Functionalities**
    🔹Conversion Sector : Enable user to convert between amount of money from one base currency to another target currency he needs.
    
@@ -128,11 +133,12 @@ user-friendly interface .
 # **Docker**
 
    🔹Image:
-       ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/7132d3ae-7030-4ce0-a528-828907d156f0)
+       ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/a259e728-858a-4487-80de-4ec2fb814b2d)
 
 
    🔹Container:
-       ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/17d9cb62-ae93-444e-a99d-afae105e4b86)
+       ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/b1bafae9-208e-4e84-ad68-849f7ec00dfa)
+
 
 
  # **APIs Documantation 📄✒️ Via [Swagger](http://localhost:5902/swagger-ui/index.html)**
