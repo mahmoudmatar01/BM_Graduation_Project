@@ -2,6 +2,7 @@ package com.example.bm_project.helper;
 
 import com.example.bm_project.exception.InvalidAmountException;
 import com.example.bm_project.exception.NotFoundCurrencyCodeException;
+import com.example.bm_project.mapper.Mapper;
 import com.example.bm_project.models.CurrencyInfo;
 import org.springframework.stereotype.Component;
 
@@ -12,8 +13,23 @@ import static com.example.bm_project.constant.StringConstants.CurrencyNotFountEx
 import static com.example.bm_project.constant.StringConstants.InvalidAmountValueException;
 
 @Component
-public class Helper implements IHelper{
-    @Override
+public class Helper {
+
+    // singleton design patterns to use same object in memory every time i use Mapper class
+    private Helper(){}
+
+    public static Helper getInstance(){
+
+        // check if there is an instance in memory or not
+        if(helper==null){
+            helper=new Helper();
+        }
+        return helper;
+    }
+
+    private static Helper helper=null;
+
+
     public boolean isNumericAndPositive(String str) {
         try {
             double numericValue = Double.parseDouble(str);
@@ -23,7 +39,6 @@ public class Helper implements IHelper{
         }
     }
 
-    @Override
     public boolean currencyIsExist(String baseCurrencyCode) {
         Optional<CurrencyInfo> baseCurrencyDto = currencyDtoList.stream()
                 .filter(currencyDto -> currencyDto.getCurrencyCode().equals(baseCurrencyCode))
@@ -34,7 +49,6 @@ public class Helper implements IHelper{
         return false;
     }
 
-    @Override
     public void throwException(String baseCurrency,String amount) {
         if(!currencyIsExist(baseCurrency.toUpperCase())){
             throw new NotFoundCurrencyCodeException(CurrencyNotFountExceptionMessage);

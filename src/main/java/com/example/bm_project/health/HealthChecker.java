@@ -1,4 +1,4 @@
-package com.example.bm_project.logger;
+package com.example.bm_project.health;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.actuate.health.Health;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class MemoryHealthIndicator implements HealthIndicator {
+public class HealthChecker implements HealthIndicator {
     @Override
     public Health health() {
         long freeMemory=Runtime.getRuntime().freeMemory();

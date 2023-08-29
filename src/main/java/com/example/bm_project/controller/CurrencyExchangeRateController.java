@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -39,10 +40,13 @@ public class CurrencyExchangeRateController {
 
         // Map the response data from only object contain all keys and values to list<CurrencyRate> model
         List<CurrencyRate> currencyRates = new ArrayList<>();
+
+        //to handle decimal format to have only two digits after the decimal point
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
         for (Map.Entry<String, Double> entry : response.getConversionRates().entrySet()) {
             CurrencyRate currencyRate = new CurrencyRate();
             currencyRate.setCode(entry.getKey());
-            currencyRate.setRate(entry.getValue());
+            currencyRate.setRate(Double.parseDouble(decimalFormat.format(entry.getValue())));
             currencyRates.add(currencyRate);
         }
 

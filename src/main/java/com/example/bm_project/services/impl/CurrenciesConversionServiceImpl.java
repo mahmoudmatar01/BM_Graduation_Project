@@ -5,33 +5,37 @@ import com.example.bm_project.client.BaseCurrenciesConversionClient;
 import com.example.bm_project.dto.response.CurrenciesConversionResponseDto;
 import com.example.bm_project.exception.NotFoundCurrencyCodeException;
 import com.example.bm_project.helper.Helper;
-import com.example.bm_project.helper.IHelper;
 import com.example.bm_project.mapper.IMapper;
 import com.example.bm_project.mapper.Mapper;
 import com.example.bm_project.services.CurrenciesConversionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
 import java.util.Map;
 import java.util.Optional;
 
 import static com.example.bm_project.constant.StringConstants.CurrencyNotFountExceptionMessage;
 
 
+@CacheConfig(cacheNames = "CurrenciesConversionCaching")
 @Service
 public class CurrenciesConversionServiceImpl implements CurrenciesConversionService {
 
     private  final BaseCurrenciesConversionClient currenciesConversionClient;
     private final IMapper mapper;
-    private final IHelper helper;
+    private Helper helper;
 
     @Autowired
-    public CurrenciesConversionServiceImpl(BaseCurrenciesConversionClient currenciesConversionRepo, Mapper mapper, Helper helper) {
+    public CurrenciesConversionServiceImpl(BaseCurrenciesConversionClient currenciesConversionRepo, Mapper mapper) {
         this.currenciesConversionClient = currenciesConversionRepo;
         this.mapper=mapper;
-        this.helper = helper;
+        this.helper = helper.getInstance();
     }
 
+    @Cacheable(value = "CurrenciesConversionCache")
     @Override
     public CurrenciesConversionResponseDto getCurrenciesConversionRate(String baseCurrency, String targetCurrency, String amount) {
 
@@ -47,10 +51,16 @@ public class CurrenciesConversionServiceImpl implements CurrenciesConversionServ
         if(!helper.currencyIsExist(targetCurrency.toUpperCase())){
             throw new NotFoundCurrencyCodeException(CurrencyNotFountExceptionMessage);
         }
-
+        //to handle decimal format to have only three digits after the decimal point
+        DecimalFormat decimalFormat = new DecimalFormat("#.###");
         // receives data from data client and map it and then return response data
         Optional<Map> response= currenciesConversionClient.currenciesConversion(baseCurrency.toUpperCase(), targetCurrency.toUpperCase(), amount);
+
+        //handle and update conversion rate and conversion result to have only three digits after the decimal point
         CurrenciesConversionResponseDto currenciesConversionResponse=  mapper.convertCurrenciesConversionResponseToCurrenciesConversionDto(response.get());
+        currenciesConversionResponse.setConversionRate(decimalFormat.format(Double.parseDouble(currenciesConversionResponse.getConversionRate())));
+        currenciesConversionResponse.setConversionResult(decimalFormat.format(Double.parseDouble(currenciesConversionResponse.getConversionResult())));
+
                 return currenciesConversionResponse;
     }
 }

@@ -1,7 +1,6 @@
 package com.example.bm_project.services.impl;
 import com.example.bm_project.client.BaseCurrencyExchangeRateClient;
 import com.example.bm_project.exception.NotFoundCurrencyCodeException;
-import com.example.bm_project.helper.IHelper;
 import com.example.bm_project.helper.Helper;
 import com.example.bm_project.mapper.IMapper;
 import com.example.bm_project.mapper.Mapper;
@@ -20,13 +19,13 @@ public class CurrencyExchangeRateImpl implements CurrencyExchangeRateService {
 
     private final BaseCurrencyExchangeRateClient currencyExchangeRateClient;
     private final IMapper mapper;
-    private final IHelper helper;
+    private Helper helper;
 
     @Autowired
-    public CurrencyExchangeRateImpl(BaseCurrencyExchangeRateClient baseCurrencyExchangeRateRepo, Mapper mapper, Helper helper) {
+    public CurrencyExchangeRateImpl(BaseCurrencyExchangeRateClient baseCurrencyExchangeRateRepo, Mapper mapper) {
         this.currencyExchangeRateClient = baseCurrencyExchangeRateRepo;
         this.mapper=mapper;
-        this.helper = helper;
+        this.helper = helper.getInstance();
     }
 
     @Cacheable(value = "currenciesExchangeRateCache", key = "#baseCurrency")

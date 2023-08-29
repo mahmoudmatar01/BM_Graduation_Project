@@ -6,30 +6,34 @@ import com.example.bm_project.dto.request.CurrenciesCompareRequestDto;
 import com.example.bm_project.dto.response.CurrencyCompareResponseDto;
 import com.example.bm_project.exception.NotFoundCurrencyCodeException;
 import com.example.bm_project.helper.Helper;
-import com.example.bm_project.helper.IHelper;
 import com.example.bm_project.mapper.IMapper;
 import com.example.bm_project.mapper.Mapper;
 import com.example.bm_project.services.CurrenciesCompareService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import static com.example.bm_project.constant.StringConstants.CurrencyNotFountExceptionMessage;
 
+
+@CacheConfig(cacheNames = "currenciesCompareCache")
 @Service
 public class CurrenciesCompareServiceImpl implements CurrenciesCompareService {
 
     private  final BaseCurrencyCompareClient currencyCompareClient;
     private final IMapper mapper;
-    private final IHelper helper;
+    private Helper helper;
 
 
     @Autowired
-    public CurrenciesCompareServiceImpl(BaseCurrencyCompareClient currencyCompareClient, Mapper mapper, Helper helper) {
+    public CurrenciesCompareServiceImpl(BaseCurrencyCompareClient currencyCompareClient, Mapper mapper) {
         this.currencyCompareClient = currencyCompareClient;
         this.mapper=mapper;
-        this.helper = helper;
+        this.helper = helper.getInstance();
     }
 
+    @Cacheable(value = "currenciesCompareCaching")
     @Override
     public CurrencyCompareResponseDto getCurrenciesCompareRate(CurrenciesCompareRequestDto currenciesCompareRequestDto) {
 
