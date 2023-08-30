@@ -12,7 +12,7 @@ user-friendly interface .
 
 ## **Project Hierarchy**
 
- ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/49dbc554-3164-47a5-be74-d521d792661a)
+![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/d0bc96a8-5082-45d1-ad2e-f6980e4e3a7a)
 
 
 # **Main Services & Functionalities**
@@ -55,7 +55,7 @@ user-friendly interface .
 
 # **Our APIs**
 
-![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/dcfe8f79-9c9e-4033-bf0e-8b88e026e841)
+![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/7bf6ec45-94cb-432a-931e-58f31c790222)
 
 ### Request and Response of Each one :
 
@@ -66,7 +66,7 @@ user-friendly interface .
    **-Request Body:** No Parameters
 
    **-Response Body:**
-        ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/14cef460-a985-4662-8fd3-8cbb00d7bc3c)
+        ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/400ddfda-9922-4467-9d15-e88b983e7475)
 
 
 
@@ -79,7 +79,7 @@ user-friendly interface .
                 Amount: 200
                 
   **-Response Body:**
-        ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/f35bb384-b8f9-4354-8d05-e98dee9336ae)
+      ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/a63b713c-b841-4b9b-bb80-6de9d2210bd3)
 
 
 
@@ -91,10 +91,10 @@ user-friendly interface .
   **-Request:** AED
   
   **-Response Body:**
-       ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/4f56d251-5511-40eb-a086-0d21510214eb)
+        ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/282c4aac-3c32-4b1c-8aeb-8dccfb0b6974)
 
  
-  ### 🔸A backend exchange-rate/currency-exchangeRate EndPoint:
+  ### 🔸A backend currencies-compare-rate/currencies-compare EndPoint:
   
    **-Type:** POST
   
@@ -112,7 +112,8 @@ user-friendly interface .
 
 
    **-Response Body:** 
-      ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/12511921-ec8b-457c-a2bb-08f9c2b4716c)
+        ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/503a9684-812b-421b-a7c1-c4c0d4dabb71)
+
 
 
 
@@ -133,11 +134,11 @@ user-friendly interface .
 # **Docker**
 
    🔹Image:
-       ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/a259e728-858a-4487-80de-4ec2fb814b2d)
+       ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/c771926e-63af-403e-8295-eaf8b3d18c0d)
 
 
    🔹Container:
-       ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/b1bafae9-208e-4e84-ad68-849f7ec00dfa)
+       ![image](https://github.com/mahmoudmatar01/BM_Graduation_Project/assets/116927809/e25126fb-f117-49e5-bfd7-db4a1102f426)
 
 
 
