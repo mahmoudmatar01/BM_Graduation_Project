@@ -11,6 +11,7 @@ import com.example.currencyapp.mapper.Mapper;
 import com.example.currencyapp.services.CurrenciesCompareService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,7 @@ public class CurrenciesCompareServiceImpl implements CurrenciesCompareService {
     }
 
     @Cacheable(value = "currenciesCompareCaching")
+//    @CachePut(value ="currenciesCompareCaching" )
     @Override
     public CurrencyCompareDto getCurrenciesCompareRate(CurrenciesCompareRequestDto currenciesCompareRequestDto) {
 

@@ -14,7 +14,7 @@ public class HealthChecker implements HealthIndicator {
         long freeMemory=Runtime.getRuntime().freeMemory();
         long totalMemory= Runtime.getRuntime().totalMemory();
         double freeMemoryPercent=((double)freeMemory/(double) totalMemory)*100;
-        if (freeMemoryPercent > 35){
+        if (freeMemoryPercent > 40){
             log.info("free_memory: "+freeMemory + " bytes");
             log.info("total_memory: "+totalMemory +" bytes");
             log.info("free_memory_percent: "+freeMemoryPercent+" %");

@@ -1,4 +1,4 @@
-//package com.example.currency_conversion_app.cache.config;
+//package com.example.currencyapp.cache.config;
 //
 //import org.springframework.cache.CacheManager;
 //import org.springframework.cache.annotation.CachingConfigurerSupport;

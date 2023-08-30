@@ -8,6 +8,7 @@ import com.example.currencyapp.models.CurrencyRate;
 import com.example.currencyapp.services.CurrencyExchangeRateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,7 @@ public class CurrencyExchangeRateImpl implements CurrencyExchangeRateService {
     }
 
     @Cacheable(value = "currenciesExchangeRateCache")
+//    @CachePut(value ="currenciesExchangeRateCache" )
     @Override
     public List<CurrencyRate> getBaseCurrencyExchangeRate(String baseCurrency) {
 

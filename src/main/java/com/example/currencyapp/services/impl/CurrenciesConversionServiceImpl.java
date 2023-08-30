@@ -10,6 +10,7 @@ import com.example.currencyapp.mapper.Mapper;
 import com.example.currencyapp.services.CurrenciesConversionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,7 @@ public class CurrenciesConversionServiceImpl implements CurrenciesConversionServ
     }
 
     @Cacheable(value = "CurrenciesConversionCache")
+//    @CachePut(value ="CurrenciesConversionCache" )
     @Override
     public CurrenciesConversionDto getCurrenciesConversionRate(String baseCurrency, String targetCurrency, String amount) {
                 /* Check if base currency and target currencies are valid or not
