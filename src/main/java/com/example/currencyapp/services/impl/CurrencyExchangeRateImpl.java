@@ -1,5 +1,5 @@
 package com.example.currencyapp.services.impl;
-import com.example.currencyapp.client.BaseCurrencyExchangeRateClient;
+import com.example.currencyapp.client.BaseClient;
 import com.example.currencyapp.exception.NotFoundCurrencyCodeException;
 import com.example.currencyapp.helper.Helper;
 import com.example.currencyapp.mapper.IMapper;
@@ -20,12 +20,12 @@ import static com.example.currencyapp.constant.StringConstants.CurrencyNotFountE
 @Service
 public class CurrencyExchangeRateImpl implements CurrencyExchangeRateService {
     //Logger LOG =LoggerFactory.getLogger(CurrencyExchangeRateImpl.class);
-    private final BaseCurrencyExchangeRateClient currencyExchangeRateClient;
+    private final BaseClient currencyExchangeRateClient;
     private final IMapper mapper;
     private Helper helper;
 
     @Autowired
-    public CurrencyExchangeRateImpl(BaseCurrencyExchangeRateClient baseCurrencyExchangeRateRepo, Mapper mapper) {
+    public CurrencyExchangeRateImpl(BaseClient baseCurrencyExchangeRateRepo, Mapper mapper) {
         this.currencyExchangeRateClient = baseCurrencyExchangeRateRepo;
         this.mapper=mapper;
         this.helper = helper.getInstance();
@@ -45,7 +45,7 @@ public class CurrencyExchangeRateImpl implements CurrencyExchangeRateService {
 
 
         // receives data from client and map it and then return response data
-        var response= currencyExchangeRateClient.getBaseCurrencyExchangeRate(baseCurrency.toUpperCase());
+        var response= currencyExchangeRateClient.baseCurrencyExchangeRate(baseCurrency.toUpperCase());
         return mapper.convertExchangeRateResponseToListCurrencyExchangeRateDto(response);
     }
 }

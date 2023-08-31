@@ -1,7 +1,7 @@
 package com.example.currencyapp.services.impl;
 
 
-import com.example.currencyapp.client.BaseCurrenciesConversionClient;
+import com.example.currencyapp.client.BaseClient;
 import com.example.currencyapp.dto.response.CurrenciesConversionDto;
 import com.example.currencyapp.exception.NotFoundCurrencyCodeException;
 import com.example.currencyapp.helper.Helper;
@@ -21,12 +21,12 @@ import static com.example.currencyapp.constant.StringConstants.*;
 @Service
 public class CurrenciesConversionServiceImpl implements CurrenciesConversionService {
 
-    private  final BaseCurrenciesConversionClient currenciesConversionClient;
+    private  final BaseClient currenciesConversionClient;
     private final IMapper mapper;
     private Helper helper;
 
     @Autowired
-    public CurrenciesConversionServiceImpl(BaseCurrenciesConversionClient currenciesConversionRepo, Mapper mapper) {
+    public CurrenciesConversionServiceImpl(BaseClient currenciesConversionRepo, Mapper mapper) {
         this.currenciesConversionClient = currenciesConversionRepo;
         this.mapper=mapper;
         this.helper = helper.getInstance();
@@ -49,7 +49,7 @@ public class CurrenciesConversionServiceImpl implements CurrenciesConversionServ
         }
         // receives data from data client and map it and then return response data
         return mapper.convertCurrenciesConversionResponseToCurrenciesConversionDto(
-                currenciesConversionClient.currenciesConversion(baseCurrency.toUpperCase(),
+                currenciesConversionClient.baseCurrenciesConversion(baseCurrency.toUpperCase(),
                         targetCurrency.toUpperCase(),
                         amount)
         );

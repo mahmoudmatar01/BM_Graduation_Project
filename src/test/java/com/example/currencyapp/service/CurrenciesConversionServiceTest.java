@@ -1,6 +1,7 @@
 package com.example.currencyapp.service;
 
 
+import com.example.currencyapp.dto.response.CurrenciesConversionDto;
 import com.example.currencyapp.exception.InvalidAmountException;
 import com.example.currencyapp.exception.NotFoundCurrencyCodeException;
 import com.example.currencyapp.logger.Logger;
@@ -31,8 +32,8 @@ public class CurrenciesConversionServiceTest {
 
 //    @Test
 //    void currencyExchangeRateSuccessTestCase() {
-//        CurrenciesConversionResponseDto currenciesConversionRate= currenciesConversionService.getCurrenciesConversionRate("JPY","KWD","12.3");
-//        CurrenciesConversionResponseDto currenciesConversionResponseDto=CurrenciesConversionResponseDto
+//        CurrenciesConversionDto currenciesConversionRate= currenciesConversionService.getCurrenciesConversionRate("JPY","KWD","12.3");
+//        CurrenciesConversionDto currenciesConversionResponseDto=CurrenciesConversionDto
 //                .builder()
 //                .conversionRate("0.002108")
 //                .baseCode("JPY")

@@ -1,7 +1,7 @@
 package com.example.currencyapp.services.impl;
 
 
-import com.example.currencyapp.client.BaseCurrencyCompareClient;
+import com.example.currencyapp.client.BaseClient;
 import com.example.currencyapp.dto.request.CurrenciesCompareRequestDto;
 import com.example.currencyapp.dto.response.CurrencyCompareDto;
 import com.example.currencyapp.exception.NotFoundCurrencyCodeException;
@@ -25,13 +25,13 @@ import static com.example.currencyapp.constant.StringConstants.CurrencyNotFountE
 @CacheConfig(cacheNames = "currenciesCompareCache")
 @Service
 public class CurrenciesCompareServiceImpl implements CurrenciesCompareService {
-    private  final BaseCurrencyCompareClient currencyCompareClient;
+    private  final BaseClient currencyCompareClient;
     private final IMapper mapper;
     private Helper helper;
 
 
     @Autowired
-    public CurrenciesCompareServiceImpl(BaseCurrencyCompareClient currencyCompareClient, Mapper mapper) {
+    public CurrenciesCompareServiceImpl(BaseClient currencyCompareClient, Mapper mapper) {
         this.currencyCompareClient = currencyCompareClient;
         this.mapper=mapper;
         this.helper = helper.getInstance();
@@ -63,7 +63,7 @@ public class CurrenciesCompareServiceImpl implements CurrenciesCompareService {
         CurrencyCompareDto response=mapper
                 .convertCurrencyExchangeResponseToCurrencyCompareResponseDto(
                         currencyCompareClient
-                                .getBaseCurrencyExchangeRate(
+                                .baseCurrencyCompare(
                                         currenciesCompareRequestDto
                                                 .getBaseCode()
                                                 .toUpperCase()
