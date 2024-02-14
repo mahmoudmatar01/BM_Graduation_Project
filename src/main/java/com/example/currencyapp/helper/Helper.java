@@ -13,21 +13,16 @@ import static com.example.currencyapp.constant.StringConstants.InvalidAmountValu
 
 @Component
 public class Helper {
-
     // singleton design patterns to use same object in memory every time I use Mapper class
     private Helper(){}
-
     public static Helper getInstance(){
-
         // check if there is an instance in memory or not
         if(helper==null){
             helper=new Helper();
         }
         return helper;
     }
-
     private static Helper helper=null;
-
 
     public boolean isNumericAndPositive(String str) {
         try {
@@ -42,17 +37,13 @@ public class Helper {
         Optional<Currency> baseCurrencyDto = currencyDtoList.stream()
                 .filter(currencyDto -> currencyDto.getCurrencyCode().equals(baseCurrencyCode))
                 .findFirst();
-        if(baseCurrencyDto.isPresent()){
-            return true;
-        }
-        return false;
+        return baseCurrencyDto.isPresent();
     }
 
     public void throwException(String baseCurrency,String amount) {
         if(!currencyIsExist(baseCurrency.toUpperCase())){
             throw new NotFoundCurrencyCodeException(CurrencyNotFountExceptionMessage);
         }
-
               /* Check if amount is positive and numeric or not if an amount is not valid
                  the project will throw an invalid amount exception  */
         if(!isNumericAndPositive(String.valueOf(amount))){

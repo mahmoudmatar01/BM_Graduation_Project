@@ -10,5 +10,4 @@ import java.util.Map;
 @Builder
 public class CurrencyExchangeRateDto  {
     private Map<String, Double> conversionRates;
-
 }

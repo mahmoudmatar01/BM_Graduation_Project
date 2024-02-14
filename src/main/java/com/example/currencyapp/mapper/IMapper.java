@@ -14,6 +14,5 @@ public interface IMapper {
 
     List<CurrencyRate> convertExchangeRateResponseToListCurrencyExchangeRateDto(CurrencyExchangeRateResponse response);
     CurrenciesConversionDto convertCurrenciesConversionResponseToCurrenciesConversionDto(CurrenciesConversionResponse response);
-
     CurrencyCompareDto convertCurrencyExchangeResponseToCurrencyCompareResponseDto(CurrencyCompareResponse currencyCompareResponseDto , double amount);
 }

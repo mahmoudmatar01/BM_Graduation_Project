@@ -11,7 +11,6 @@ import static com.example.currencyapp.constant.ApiConstant.ClientAPIKEY;
 import static com.example.currencyapp.constant.ApiConstant.ClientBASEURL;
 
 @FeignClient(value="feign-currencies",url = ClientBASEURL +"/"+ ClientAPIKEY)
-
 public interface BaseClient {
 
     @GetMapping("/pair/{baseCurrency}/{targetCurrency}/{amount}")

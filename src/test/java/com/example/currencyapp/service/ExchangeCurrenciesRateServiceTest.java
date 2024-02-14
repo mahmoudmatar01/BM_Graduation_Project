@@ -16,18 +16,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 public class ExchangeCurrenciesRateServiceTest {
-    private Logger logger ;
-
-    private CurrencyExchangeRateService currencyExchangeRateService;
-
-
-
+    private final Logger logger ;
+    private final CurrencyExchangeRateService currencyExchangeRateService;
     @Autowired
     public ExchangeCurrenciesRateServiceTest(CurrencyExchangeRateService currencyExchangeRateService) {
-        this.logger = logger.getInstance();
+        this.logger = Logger.getInstance();
         this.currencyExchangeRateService=currencyExchangeRateService;
     }
-
 
     @Test
     void currencyExchangeRateSuccessTestCase(){
@@ -91,7 +86,10 @@ public class ExchangeCurrenciesRateServiceTest {
 
         );
 
-        assertEquals(currencyRateList.stream().map(currencyRate -> currencyRate.getCode()).toList(),response.stream().map(currencyRate -> currencyRate.getCode()).toList());
+        assertEquals(currencyRateList.stream()
+                .map(CurrencyRate::getCode).toList(),
+                response.stream()
+                .map(CurrencyRate::getCode).toList());
         logger.logInfo(this.getClass(),"currencyExchangeRateSuccessTestCase "+SuccessfulTest);
     }
 

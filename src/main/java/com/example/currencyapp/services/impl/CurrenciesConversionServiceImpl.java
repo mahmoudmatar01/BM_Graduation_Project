@@ -10,7 +10,6 @@ import com.example.currencyapp.mapper.Mapper;
 import com.example.currencyapp.services.CurrenciesConversionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -23,17 +22,16 @@ public class CurrenciesConversionServiceImpl implements CurrenciesConversionServ
 
     private  final BaseClient currenciesConversionClient;
     private final IMapper mapper;
-    private Helper helper;
+    private final Helper helper;
 
     @Autowired
     public CurrenciesConversionServiceImpl(BaseClient currenciesConversionRepo, Mapper mapper) {
         this.currenciesConversionClient = currenciesConversionRepo;
         this.mapper=mapper;
-        this.helper = helper.getInstance();
+        this.helper = Helper.getInstance();
     }
 
     @Cacheable(value = "CurrenciesConversionCache")
-//    @CachePut(value ="CurrenciesConversionCache" )
     @Override
     public CurrenciesConversionDto getCurrenciesConversionRate(String baseCurrency, String targetCurrency, String amount) {
                 /* Check if base currency and target currencies are valid or not

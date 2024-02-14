@@ -13,10 +13,7 @@ import static com.example.currencyapp.constant.StringConstants.FailedMessage;
 
 @ControllerAdvice
 public class ExceptionHandler extends ResponseEntityExceptionHandler {
-    private Logger logger ;
-    public ExceptionHandler() {
-        this.logger =logger.getInstance();
-    }
+    private final Logger logger =Logger.getInstance();
 
     @org.springframework.web.bind.annotation.ExceptionHandler(NotFoundCurrencyCodeException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)

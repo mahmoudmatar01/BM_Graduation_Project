@@ -11,7 +11,6 @@ import com.example.currencyapp.mapper.Mapper;
 import com.example.currencyapp.services.CurrenciesCompareService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -27,21 +26,19 @@ import static com.example.currencyapp.constant.StringConstants.CurrencyNotFountE
 public class CurrenciesCompareServiceImpl implements CurrenciesCompareService {
     private  final BaseClient currencyCompareClient;
     private final IMapper mapper;
-    private Helper helper;
+    private final Helper helper;
 
 
     @Autowired
     public CurrenciesCompareServiceImpl(BaseClient currencyCompareClient, Mapper mapper) {
         this.currencyCompareClient = currencyCompareClient;
         this.mapper=mapper;
-        this.helper = helper.getInstance();
+        this.helper = Helper.getInstance();
     }
 
     @Cacheable(value = "currenciesCompareCaching")
-//    @CachePut(value ="currenciesCompareCaching" )
     @Override
     public CurrencyCompareDto getCurrenciesCompareRate(CurrenciesCompareRequestDto currenciesCompareRequestDto) {
-
 
         /* Check if base currency and target currencies are valid or not
            if it is not valid the project will throw not found currency exception and

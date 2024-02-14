@@ -9,7 +9,6 @@ import java.util.List;
 
 import static com.example.currencyapp.constant.ProjectConstants.currencyDtoList;
 
-//@CacheConfig(cacheNames = "currenciesCache")
 @Service
 public class CurrenciesInfoServicesImpl implements CurrenciesInfoService {
 

@@ -1,13 +1,15 @@
 package com.example.currencyapp.enums;
 
 
+import lombok.Getter;
+
 import static com.example.currencyapp.constant.StringConstants.*;
 
+@Getter
 public enum ErrorCodeEnum {
     InValidAmount("amount#2$$", InvalidAmountValueException),
     CurrencyNotFound("currency00#%**", CurrencyNotFountExceptionMessage),
     GlobalExceptionError("invalid&%44**", SomeThingInvalid);
-
 
     private final String key;
     private final String value;
@@ -17,11 +19,4 @@ public enum ErrorCodeEnum {
         this.value = value;
     }
 
-    public String getKey() {
-        return key;
-    }
-
-    public String getValue() {
-        return value;
-    }
 }

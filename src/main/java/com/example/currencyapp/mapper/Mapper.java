@@ -52,13 +52,12 @@ public class Mapper implements IMapper{
         response.setConversionRate(decimalFormat.format(Double.parseDouble(response.getConversionRate())));
 
         //handle and update conversion rate and conversion result to have only three digits after the decimal point
-        CurrenciesConversionDto currencyConversionDto= CurrenciesConversionDto.builder()
+        return CurrenciesConversionDto.builder()
                 .conversionRate(String.valueOf(response.getConversionRate()))
                 .baseCode(String.valueOf(response.getBaseCode()))
                 .conversionResult(String.valueOf(response.getConversionResult()))
                 .targetCode(String.valueOf(response.getTargetCode()))
                 .build();
-        return currencyConversionDto;
     }
 
 

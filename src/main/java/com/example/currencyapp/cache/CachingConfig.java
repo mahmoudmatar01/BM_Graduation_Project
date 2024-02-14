@@ -1,4 +1,4 @@
-package com.example.currencyapp.cache.config;
+package com.example.currencyapp.cache;
 
 import com.example.currencyapp.logger.Logger;
 import com.github.benmanes.caffeine.cache.Caffeine;
@@ -14,17 +14,14 @@ import java.util.concurrent.TimeUnit;
 @EnableCaching
 public class CachingConfig {
 
-    private Logger logger ;
+    // Take an instance from Logger class
+    private final Logger logger =Logger.getInstance();
 
-    public CachingConfig() {
-        this.logger=logger.getInstance();
-    }
-
-    private final long expireAfterDuration=1;
-    private final String expireAfterTimeUnit="HOURS";
     @Bean
     public CacheManager cacheManager() {
         CaffeineCacheManager cacheManager = new CaffeineCacheManager();
+        long expireAfterDuration = 1;
+        String expireAfterTimeUnit = "HOURS";
         cacheManager.setCaffeine(Caffeine.newBuilder()
                 .expireAfterWrite(expireAfterDuration, TimeUnit.valueOf(expireAfterTimeUnit)) // Cache entries expire after 1 hour
                 .maximumSize(100));

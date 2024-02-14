@@ -1,7 +1,6 @@
 package com.example.currencyapp.enums;
 
 public enum CurrenciesFlag {
-
     usd,
     gbp,
     aed,
@@ -13,6 +12,4 @@ public enum CurrenciesFlag {
     sar,
     egp,
     eur
-
-
 }

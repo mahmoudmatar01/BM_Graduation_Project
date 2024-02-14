@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class CurrenciesCompareRequestDto {
-
     private String baseCode;
     private String firstTargetCode;
     private String secondTargetCode;

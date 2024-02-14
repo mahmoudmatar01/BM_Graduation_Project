@@ -18,13 +18,13 @@ import java.util.Map;
 
 @SpringBootTest
 public class CurrenciesCompareServiceTest {
-    private Logger logger ;
-    private CurrenciesCompareService currenciesCompareService;
+    private final Logger logger ;
+    private final CurrenciesCompareService currenciesCompareService;
 
 
     @Autowired
     public CurrenciesCompareServiceTest(CurrenciesCompareService currenciesCompareService) {
-        this.logger = logger.getInstance();
+        this.logger = Logger.getInstance();
         this.currenciesCompareService=currenciesCompareService;
     }
 

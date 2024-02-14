@@ -15,27 +15,19 @@ import java.util.List;
 
 @SpringBootTest
 public class CurrenciesInfoServiceTest {
-    private Logger logger ;
-
-    private CurrenciesInfoService currenciesInfoService;
-
-
+    private final Logger logger ;
+    private final CurrenciesInfoService currenciesInfoService;
 
     @Autowired
     public CurrenciesInfoServiceTest(CurrenciesInfoService currenciesInfoService) {
-        this.logger = logger.getInstance();
+        this.logger = Logger.getInstance();
         this.currenciesInfoService=currenciesInfoService;
     }
-
-
-
-
 
     @Test
     void getCurrencies(){
         List<Currency>currencyInfos=currenciesInfoService.getAllCurrenciesInfo();
         assertEquals(currencyDtoList,currencyInfos);
         logger.logInfo(this.getClass(),"getCurrencies "+SuccessfulTest);
-
     }
 }
