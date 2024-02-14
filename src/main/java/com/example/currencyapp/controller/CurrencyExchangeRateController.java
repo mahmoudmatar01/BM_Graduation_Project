@@ -7,7 +7,6 @@ import com.example.currencyapp.models.ResponseModel;
 import com.example.currencyapp.services.CurrencyExchangeRateService;
 import com.example.currencyapp.services.impl.CurrencyExchangeRateImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,27 +18,30 @@ import static com.example.currencyapp.constant.StringConstants.*;
 @RestController
 @RequestMapping(ExchangeRateUrl)
 @CrossOrigin(origins = "*", maxAge= 3600)
-
 public class CurrencyExchangeRateController {
-    private Logger logger ;
-
+    private final Logger logger ;
     private final CurrencyExchangeRateService baseCurrencyExChangeRateServices;
 
     @Autowired
     public CurrencyExchangeRateController(CurrencyExchangeRateImpl baseCurrencyExChangeRateServices) {
         this.baseCurrencyExChangeRateServices = baseCurrencyExChangeRateServices;
-        this.logger=logger.getInstance();
+        this.logger= Logger.getInstance();
 
     }
 
     @GetMapping("/currency-exchangeRate/{baseCurrency}")
-    ResponseEntity<ResponseModel> getBaseCurrencyExchangeRate(@PathVariable String baseCurrency){
+    ResponseEntity<?> getBaseCurrencyExchangeRate(@PathVariable String baseCurrency){
 
         // get all data from service layer
         List<CurrencyRate>  response=baseCurrencyExChangeRateServices.getBaseCurrencyExchangeRate(baseCurrency);
         logger.logInfo(this.getClass(),SuccessfulControllerResponse);
         //return data response
-        return new ResponseEntity<>(new ResponseModel(SuccessMessage,response), HttpStatus.OK);
+        return ResponseEntity.ok(
+                ResponseModel.builder()
+                        .status(SuccessMessage)
+                        .data(response)
+                        .build()
+        );
 
 
     }

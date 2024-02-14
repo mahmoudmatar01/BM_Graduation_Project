@@ -5,7 +5,6 @@ import com.example.currencyapp.models.ResponseModel;
 import com.example.currencyapp.services.CurrenciesInfoService;
 import com.example.currencyapp.services.impl.CurrenciesInfoServicesImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,24 +14,24 @@ import static com.example.currencyapp.constant.StringConstants.*;
 @RestController
 @RequestMapping(CurrenciesInfoUrl)
 @CrossOrigin(origins = "*", maxAge= 3600)
-
 public class CurrenciesInfoController {
-    private Logger logger ;
+    private final Logger logger ;
     private  final CurrenciesInfoService currenciesInfoServices;
 
     @Autowired
     public CurrenciesInfoController(CurrenciesInfoServicesImpl currenciesInfoServices) {
         this.currenciesInfoServices = currenciesInfoServices;
-        this.logger=logger.getInstance();
+        this.logger= Logger.getInstance();
 
     }
 
     @GetMapping("/currencies")
-    ResponseEntity<ResponseModel>getAllCurrencies(){
+    ResponseEntity<?>getAllCurrencies(){
         logger.logInfo(this.getClass(),SuccessfulControllerResponse);
-        return  new ResponseEntity<>(new ResponseModel(
-                SuccessMessage,
-                currenciesInfoServices.getAllCurrenciesInfo()
-        ), HttpStatus.OK);
+        var response =ResponseModel.builder()
+                .status(SuccessMessage)
+                .data(currenciesInfoServices.getAllCurrenciesInfo())
+                .build();
+        return  ResponseEntity.ok(response);
     }
 }
